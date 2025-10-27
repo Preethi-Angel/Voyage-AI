@@ -1,0 +1,35 @@
+# Core Framework
+fastapi
+uvicorn[standard]
+pydantic>=2.0
+pydantic-settings
+
+# AWS Services - Let multi-agent-orchestrator determine versions
+boto3
+botocore
+
+# AWS Multi-Agent Orchestrator SDK
+# Note: Package was renamed to 'agent-squad' but import paths are still 'multi_agent_orchestrator'
+# Using the original package name for compatibility
+multi-agent-orchestrator
+
+# AWS Strands Agents SDK (for Stage 3 advanced orchestration)
+strands-agents
+
+# HTTP & API
+httpx
+python-multipart
+
+# Validation & Data
+python-jose[cryptography]
+python-dotenv
+
+# Logging & Monitoring
+structlog
+
+# Utils
+python-dateutil
+
+# Real Travel Data APIs
+amadeus>=8.0.0
+requests-cache>=1.0.0
