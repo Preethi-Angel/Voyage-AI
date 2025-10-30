@@ -144,11 +144,14 @@ export const TravelPlanner: React.FC = () => {
             setStreamingLogs((prev) => [...prev, log]);
             setElapsedTime(Date.now() - startTime);
 
-            if (log.message.includes('Payment authorized')) {
+            // Update payment status based on AP2 protocol steps
+            if (log.message.includes('PAYMENT MANDATE: User cryptographically signs')) {
               setPaymentStatus('authorized');
-            } else if (log.message.includes('Transaction executed')) {
+            } else if (log.message.includes('TRANSACTION VERIFICATION')) {
+              setPaymentStatus('processing');
+            } else if (log.message.includes('CRYPTOGRAPHIC RECEIPT: Transaction complete')) {
               setPaymentStatus('completed');
-            } else if (log.message.includes('Payment denied')) {
+            } else if (log.message.includes('PAYMENT MANDATE DENIED')) {
               setPaymentStatus('failed');
             }
           },
