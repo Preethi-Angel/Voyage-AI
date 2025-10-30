@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TravelForm } from '../components/TravelForm';
 import { ItineraryDisplay } from '../components/ItineraryDisplay';
 import { AgentLogs } from '../components/AgentLogs';
+import AP2MandateDisplay from '../components/AP2MandateDisplay';
 import { api } from '../services/api';
 import type { TravelRequest, ApiResponse, AgentLog } from '../types';
 
@@ -236,35 +237,92 @@ export const TravelPlanner: React.FC = () => {
         </div>
       </div>
 
-      {/* AP2 Wallet Balance (only show when AP2 is selected) */}
+      {/* AP2 Info & Wallet Balance (only show when AP2 is selected) */}
       {selectedAgent === 'ap2' && (
-        <div className="card bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="bg-emerald-600 rounded-full p-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
-              </div>
+        <>
+          {/* AP2 Protocol Explanation */}
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-xl mb-6">
+            <div className="flex items-start gap-4 mb-6">
+              <svg className="w-10 h-10 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
               <div>
-                <div className="text-xs text-gray-600 font-medium mb-1">AP2 Wallet Balance</div>
-                <div className="text-2xl font-bold text-emerald-700">
-                  ${walletBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                <h3 className="text-2xl font-bold mb-2">AP2 Autonomous Payment Protocol</h3>
+                <p className="text-indigo-100 text-lg mb-4">
+                  Experience secure, verifiable AI commerce with cryptographic proof of intent
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-indigo-400 rounded-full flex items-center justify-center font-bold">1</div>
+                  <h4 className="font-bold">Intent Mandate</h4>
+                </div>
+                <p className="text-sm text-indigo-100">AI agent declares purchase authority with budget constraints</p>
+              </div>
+
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-purple-400 rounded-full flex items-center justify-center font-bold">2</div>
+                  <h4 className="font-bold">Cart Mandate</h4>
+                </div>
+                <p className="text-sm text-indigo-100">Agent builds itemized proposal within authorized limits</p>
+              </div>
+
+              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center font-bold">3</div>
+                  <h4 className="font-bold">Payment Mandate</h4>
+                </div>
+                <p className="text-sm text-indigo-100">Cryptographic signing for non-repudiable proof of user intent</p>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-white/20">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div className="text-sm text-indigo-100">
+                  <span className="font-semibold">Verifiable Digital Credentials (VDCs)</span> create a secure,
+                  transparent audit trail for autonomous AI transactions. Each step is cryptographically
+                  signed and blockchain-verified, ensuring accountability and user control.
                 </div>
               </div>
             </div>
-            {paymentStatus !== 'idle' && (
-              <div className={`flex items-center gap-2 px-4 py-2 rounded-lg border ${
-                paymentStatus === 'processing' ? 'bg-amber-100 text-amber-800 border-amber-300' :
-                paymentStatus === 'authorized' ? 'bg-blue-100 text-blue-800 border-blue-300' :
-                paymentStatus === 'completed' ? 'bg-green-100 text-green-800 border-green-300' :
-                'bg-red-100 text-red-800 border-red-300'
-              }`}>
-                <span className="font-semibold capitalize">{paymentStatus}</span>
-              </div>
-            )}
           </div>
-        </div>
+
+          {/* Wallet Balance */}
+          <div className="card bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="bg-emerald-600 rounded-full p-3">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-600 font-medium mb-1">AP2 Wallet Balance</div>
+                  <div className="text-2xl font-bold text-emerald-700">
+                    ${walletBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                  </div>
+                </div>
+              </div>
+              {paymentStatus !== 'idle' && (
+                <div className={`flex items-center gap-2 px-4 py-2 rounded-lg border ${
+                  paymentStatus === 'processing' ? 'bg-amber-100 text-amber-800 border-amber-300' :
+                  paymentStatus === 'authorized' ? 'bg-blue-100 text-blue-800 border-blue-300' :
+                  paymentStatus === 'completed' ? 'bg-green-100 text-green-800 border-green-300' :
+                  'bg-red-100 text-red-800 border-red-300'
+                }`}>
+                  <span className="font-semibold capitalize">{paymentStatus}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
       )}
 
       {/* Travel Form */}
@@ -450,67 +508,12 @@ export const TravelPlanner: React.FC = () => {
           {/* Itinerary */}
           <ItineraryDisplay itinerary={response.itinerary} />
 
-          {/* AP2 Payment Details */}
+          {/* AP2 Payment Protocol Visualization */}
           {selectedAgent === 'ap2' && response.ap2_mandates && (
-            <div className="card border-2 border-emerald-200">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-2">
-                <svg className="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                AP2 Verification Details
-              </h2>
-
-              {/* Payment Receipt */}
-              {response.payment_details && (
-                <div className="mb-4 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-                  <div className="font-semibold text-emerald-900 mb-3">Payment Receipt</div>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Receipt ID:</span>
-                      <span className="font-mono text-gray-900">{response.payment_details.receipt_id}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Amount Paid:</span>
-                      <span className="font-bold text-emerald-700">${response.payment_details.amount_paid.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between items-start">
-                      <span className="text-gray-600">Blockchain Hash:</span>
-                      <span className="font-mono text-xs text-gray-600 break-all max-w-xs text-right">
-                        {response.payment_details.blockchain_hash.substring(0, 32)}...
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Mandate Details */}
-              <details className="mb-2 group">
-                <summary className="cursor-pointer font-semibold text-gray-700 hover:text-emerald-600 p-3 bg-gray-50 rounded-lg transition-colors">
-                  Intent Mandate (Step 1)
-                </summary>
-                <pre className="mt-2 text-xs bg-gray-50 p-4 rounded-lg overflow-x-auto border border-gray-200 font-mono">
-                  {JSON.stringify(response.ap2_mandates.intent_mandate, null, 2)}
-                </pre>
-              </details>
-
-              <details className="mb-2 group">
-                <summary className="cursor-pointer font-semibold text-gray-700 hover:text-emerald-600 p-3 bg-gray-50 rounded-lg transition-colors">
-                  Cart Mandate (Step 2)
-                </summary>
-                <pre className="mt-2 text-xs bg-gray-50 p-4 rounded-lg overflow-x-auto border border-gray-200 font-mono">
-                  {JSON.stringify(response.ap2_mandates.cart_mandate, null, 2)}
-                </pre>
-              </details>
-
-              <details className="mb-2 group">
-                <summary className="cursor-pointer font-semibold text-gray-700 hover:text-emerald-600 p-3 bg-gray-50 rounded-lg transition-colors">
-                  Payment Mandate (Step 3)
-                </summary>
-                <pre className="mt-2 text-xs bg-gray-50 p-4 rounded-lg overflow-x-auto border border-gray-200 font-mono">
-                  {JSON.stringify(response.ap2_mandates.payment_mandate, null, 2)}
-                </pre>
-              </details>
-            </div>
+            <AP2MandateDisplay
+              ap2Mandates={response.ap2_mandates}
+              paymentDetails={response.payment_details}
+            />
           )}
         </div>
       )}

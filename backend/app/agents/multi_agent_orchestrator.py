@@ -32,6 +32,7 @@ from app.services.hybrid_data import (
     get_hotels,
     get_activities,
 )
+from app.services.bedrock_service import BedrockService
 
 
 class MultiAgentOrchestrator:

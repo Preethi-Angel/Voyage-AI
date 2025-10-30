@@ -76,7 +76,9 @@ export const Home: React.FC = () => {
             {/* Quick Planning */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
               <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">⚡</span>
+                <svg className="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Quick Planning</h3>
               <p className="text-gray-600 mb-4">
@@ -100,11 +102,13 @@ export const Home: React.FC = () => {
 
             {/* Smart Optimization */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-2 border-blue-200">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-bold px-3 py-1 bg-blue-100 text-blue-600 rounded-full">POPULAR</span>
               </div>
               <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">🎯</span>
+                <svg className="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Optimization</h3>
               <p className="text-gray-600 mb-4">
@@ -129,7 +133,9 @@ export const Home: React.FC = () => {
             {/* Advanced AI */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
               <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">🧠</span>
+                <svg className="w-7 h-7 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Advanced AI</h3>
               <p className="text-gray-600 mb-4">
@@ -153,11 +159,13 @@ export const Home: React.FC = () => {
 
             {/* Secure Booking */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-bold px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full">SECURE</span>
               </div>
               <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">🔒</span>
+                <svg className="w-7 h-7 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Secure Booking</h3>
               <p className="text-gray-600 mb-4">

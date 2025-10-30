@@ -177,7 +177,7 @@ class AP2Orchestrator:
         self._log_event(
             "log",
             "AP2 Intent Mandate",
-            f"📋 Step 1/5: Intent declared - {intent.description}",
+            f"Step 1/5 - INTENT MANDATE: Agent declares purchase authority for {intent.description}. Constraint: Budget ${intent.estimated_total:.2f}",
             intent.to_dict()
         )
 
@@ -244,7 +244,7 @@ class AP2Orchestrator:
         self._log_event(
             "log",
             "AP2 Cart Mandate",
-            f"🛒 Step 2/5: Cart created with {len(cart_items)} items - Total: ${total:.2f}",
+            f"Step 2/5 - CART MANDATE: Agent builds purchase proposal with {len(cart_items)} items (Flights, Hotel, Activities). Total: ${total:.2f} including taxes ${taxes:.2f} and fees ${fees:.2f}",
             cart.to_dict()
         )
 
@@ -280,14 +280,14 @@ class AP2Orchestrator:
             self._log_event(
                 "log",
                 "AP2 Payment Mandate",
-                f"🔐 Step 3/5: Payment authorized - ${cart.total:.2f} (Balance: ${self.mock_wallet_balance:.2f})",
+                f"Step 3/5 - PAYMENT MANDATE: User cryptographically signs authorization for ${cart.total:.2f}. Signature: {signature[:16]}... (Non-repudiable proof of intent)",
                 {"mandate": mandate.to_dict(), "signature": signature[:16] + "..."}
             )
         else:
             self._log_event(
                 "log",
                 "AP2 Payment Mandate",
-                f"❌ Step 3/5: Payment denied - Insufficient funds (Required: ${cart.total:.2f}, Balance: ${self.mock_wallet_balance:.2f})",
+                f"Step 3/5 - PAYMENT MANDATE DENIED: Insufficient funds (Required: ${cart.total:.2f}, Balance: ${self.mock_wallet_balance:.2f})",
                 mandate.to_dict()
             )
 
@@ -317,8 +317,8 @@ class AP2Orchestrator:
 
         self._log_event(
             "log",
-            "AP2 Transaction",
-            f"💳 Step 4/5: Transaction executed - ${mandate.amount:.2f} charged",
+            "AP2 Verification",
+            f"Step 4/5 - TRANSACTION VERIFICATION: Validating all mandates (Intent ✓ Cart ✓ Payment ✓). Processing ${mandate.amount:.2f} transaction...",
             {
                 "receipt_id": receipt_id,
                 "blockchain_hash": blockchain_hash[:16] + "...",
@@ -332,7 +332,7 @@ class AP2Orchestrator:
         self._log_event(
             "log",
             "AP2 Receipt",
-            f"📧 Step 5/5: Receipt generated - Blockchain verified",
+            f"Step 5/5 - CRYPTOGRAPHIC RECEIPT: Transaction complete with blockchain verification. Hash: {blockchain_hash[:16]}... Remaining balance: ${self.mock_wallet_balance:.2f}",
             {
                 "receipt_id": receipt_id,
                 "blockchain_hash": blockchain_hash[:32] + "...",
@@ -354,7 +354,7 @@ class AP2Orchestrator:
             self._log_event(
                 "log",
                 "AP2 Protocol",
-                f"🚀 Initiating AP2 Autonomous Payment Protocol for {request.destination} trip",
+                f"Initiating AP2 (Autonomous Payments Protocol) for {request.destination} trip. Demonstrating verifiable digital credentials for secure AI commerce.",
                 {"protocol_version": "1.0", "agent_id": self.agent_id}
             )
 
