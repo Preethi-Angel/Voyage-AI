@@ -241,52 +241,54 @@ export const TravelPlanner: React.FC = () => {
       {selectedAgent === 'ap2' && (
         <>
           {/* AP2 Protocol Explanation */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-xl mb-6">
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-6 border-2 border-emerald-200">
             <div className="flex items-start gap-4 mb-6">
-              <svg className="w-10 h-10 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              <div>
-                <h3 className="text-2xl font-bold mb-2">AP2 Autonomous Payment Protocol</h3>
-                <p className="text-indigo-100 text-lg mb-4">
+              <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-3 shadow-md">
+                <svg className="w-8 h-8 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">AP2 Autonomous Payment Protocol</h3>
+                <p className="text-gray-600 text-base">
                   Experience secure, verifiable AI commerce with cryptographic proof of intent
                 </p>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-indigo-400 rounded-full flex items-center justify-center font-bold">1</div>
-                  <h4 className="font-bold">Intent Mandate</h4>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-5 border-2 border-blue-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-sm">1</div>
+                  <h4 className="font-bold text-gray-900 text-lg">Intent Mandate</h4>
                 </div>
-                <p className="text-sm text-indigo-100">AI agent declares purchase authority with budget constraints</p>
+                <p className="text-sm text-gray-700 leading-relaxed">AI agent declares purchase authority with budget constraints</p>
               </div>
 
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-purple-400 rounded-full flex items-center justify-center font-bold">2</div>
-                  <h4 className="font-bold">Cart Mandate</h4>
+              <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-5 border-2 border-teal-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-sm">2</div>
+                  <h4 className="font-bold text-gray-900 text-lg">Cart Mandate</h4>
                 </div>
-                <p className="text-sm text-indigo-100">Agent builds itemized proposal within authorized limits</p>
+                <p className="text-sm text-gray-700 leading-relaxed">Agent builds itemized proposal within authorized limits</p>
               </div>
 
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center font-bold">3</div>
-                  <h4 className="font-bold">Payment Mandate</h4>
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-5 border-2 border-emerald-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-sm">3</div>
+                  <h4 className="font-bold text-gray-900 text-lg">Payment Mandate</h4>
                 </div>
-                <p className="text-sm text-indigo-100">Cryptographic signing for non-repudiable proof of user intent</p>
+                <p className="text-sm text-gray-700 leading-relaxed">Cryptographic signing for non-repudiable proof of user intent</p>
               </div>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-white/20">
-              <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="flex items-start gap-3 bg-gray-50 rounded-lg p-4">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <div className="text-sm text-indigo-100">
-                  <span className="font-semibold">Verifiable Digital Credentials (VDCs)</span> create a secure,
+                <div className="text-sm text-gray-700 leading-relaxed">
+                  <span className="font-semibold text-gray-900">Verifiable Digital Credentials (VDCs)</span> create a secure,
                   transparent audit trail for autonomous AI transactions. Each step is cryptographically
                   signed and blockchain-verified, ensuring accountability and user control.
                 </div>

@@ -56,29 +56,29 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
   return (
     <div className="space-y-6">
       {/* AP2 Protocol Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-6 shadow-lg">
+      <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-xl p-6 shadow-lg">
         <div className="flex items-center gap-3 mb-3">
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
           <h2 className="text-2xl font-bold">AP2 Autonomous Payment Protocol</h2>
         </div>
-        <p className="text-indigo-100 text-sm">
+        <p className="text-emerald-50 text-sm">
           Verifiable Digital Credentials (VDCs) for Secure AI Commerce
         </p>
       </div>
 
       {/* Step 1: Intent Mandate */}
       {intent_mandate && (
-        <div className="bg-white rounded-xl shadow-lg border-2 border-indigo-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 px-6 py-4 border-b border-indigo-200">
+        <div className="bg-white rounded-xl shadow-lg border-2 border-blue-200 overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 px-6 py-4 border-b border-blue-200">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                 1
               </div>
               <div>
-                <h3 className="text-xl font-bold text-indigo-900">Intent Mandate</h3>
-                <p className="text-sm text-indigo-600">Agent declares purchase authority and constraints</p>
+                <h3 className="text-xl font-bold text-blue-900">Intent Mandate</h3>
+                <p className="text-sm text-blue-600">Agent declares purchase authority and constraints</p>
               </div>
             </div>
           </div>
@@ -128,15 +128,15 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
 
       {/* Step 2: Cart Mandate */}
       {cart_mandate && (
-        <div className="bg-white rounded-xl shadow-lg border-2 border-purple-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-purple-50 to-purple-100 px-6 py-4 border-b border-purple-200">
+        <div className="bg-white rounded-xl shadow-lg border-2 border-teal-200 overflow-hidden">
+          <div className="bg-gradient-to-r from-teal-50 to-teal-100 px-6 py-4 border-b border-teal-200">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold">
                 2
               </div>
               <div>
-                <h3 className="text-xl font-bold text-purple-900">Cart Mandate</h3>
-                <p className="text-sm text-purple-600">Agent's purchase proposal with itemized breakdown</p>
+                <h3 className="text-xl font-bold text-teal-900">Cart Mandate</h3>
+                <p className="text-sm text-teal-600">Agent's purchase proposal with itemized breakdown</p>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
                       <p className="text-xs text-gray-500 mt-1">Vendor: {item.vendor}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-bold text-purple-600">${item.total_price.toFixed(2)}</p>
+                      <p className="text-lg font-bold text-teal-600">${item.total_price.toFixed(2)}</p>
                       <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
                     </div>
                   </div>
@@ -173,8 +173,8 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
                 <span className="font-semibold">${cart_mandate.fees.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-lg font-bold pt-2 border-t border-gray-200">
-                <span className="text-purple-900">Total</span>
-                <span className="text-purple-600">${cart_mandate.total.toFixed(2)}</span>
+                <span className="text-teal-900">Total</span>
+                <span className="text-teal-600">${cart_mandate.total.toFixed(2)}</span>
               </div>
             </div>
 
@@ -189,33 +189,33 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
 
       {/* Step 3: Payment Mandate */}
       {payment_mandate && (
-        <div className="bg-white rounded-xl shadow-lg border-2 border-green-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-green-50 to-green-100 px-6 py-4 border-b border-green-200">
+        <div className="bg-white rounded-xl shadow-lg border-2 border-emerald-200 overflow-hidden">
+          <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 px-6 py-4 border-b border-emerald-200">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold">
                 3
               </div>
               <div>
-                <h3 className="text-xl font-bold text-green-900">Payment Mandate</h3>
-                <p className="text-sm text-green-600">Cryptographically signed authorization (Non-repudiable)</p>
+                <h3 className="text-xl font-bold text-emerald-900">Payment Mandate</h3>
+                <p className="text-sm text-emerald-600">Cryptographically signed authorization (Non-repudiable)</p>
               </div>
             </div>
           </div>
           <div className="p-6 space-y-4">
-            <div className="flex items-center gap-4 bg-green-50 rounded-lg p-4">
-              <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-4 bg-emerald-50 rounded-lg p-4">
+              <svg className="w-12 h-12 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-gray-700">Authorization Status</p>
-                <p className="text-2xl font-bold text-green-600 uppercase">{payment_mandate.status}</p>
+                <p className="text-2xl font-bold text-emerald-600 uppercase">{payment_mandate.status}</p>
               </div>
             </div>
 
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Amount Authorized</span>
-                <span className="text-xl font-bold text-green-600">${payment_mandate.amount.toFixed(2)}</span>
+                <span className="text-xl font-bold text-emerald-600">${payment_mandate.amount.toFixed(2)}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Payment Method</span>
@@ -229,7 +229,7 @@ const AP2MandateDisplay: React.FC<AP2MandateDisplayProps> = ({
                 {payment_mandate.signature}
               </p>
               <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
-                <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 Signature verified - Non-repudiable proof of user intent
