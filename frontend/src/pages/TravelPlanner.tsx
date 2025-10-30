@@ -58,7 +58,6 @@ export const TravelPlanner: React.FC = () => {
   const [response, setResponse] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [streamingLogs, setStreamingLogs] = useState<AgentLog[]>([]);
-  const [startTime, setStartTime] = useState<number>(0);
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'authorized' | 'completed' | 'failed'>('idle');
   const [walletBalance, setWalletBalance] = useState<number>(10000);
@@ -78,7 +77,8 @@ export const TravelPlanner: React.FC = () => {
     setError(null);
     setResponse(null);
     setStreamingLogs([]);
-    setStartTime(Date.now());
+    setElapsedTime(0);
+    const currentStartTime = Date.now();
 
     try {
       if (selectedAgent === 'single') {
@@ -87,12 +87,12 @@ export const TravelPlanner: React.FC = () => {
           request,
           (log) => {
             setStreamingLogs((prev) => [...prev, log]);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (result) => {
             setResponse(result);
             setLoading(false);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (errorMsg) => {
             setError(errorMsg);
@@ -105,12 +105,12 @@ export const TravelPlanner: React.FC = () => {
           request,
           (log) => {
             setStreamingLogs((prev) => [...prev, log]);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (result) => {
             setResponse(result);
             setLoading(false);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (errorMsg) => {
             setError(errorMsg);
@@ -123,12 +123,12 @@ export const TravelPlanner: React.FC = () => {
           request,
           (log) => {
             setStreamingLogs((prev) => [...prev, log]);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (result) => {
             setResponse(result);
             setLoading(false);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
           },
           (errorMsg) => {
             setError(errorMsg);
@@ -142,7 +142,7 @@ export const TravelPlanner: React.FC = () => {
           request,
           (log) => {
             setStreamingLogs((prev) => [...prev, log]);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
 
             // Update payment status based on AP2 protocol steps
             if (log.message.includes('PAYMENT MANDATE: User cryptographically signs')) {
@@ -158,7 +158,7 @@ export const TravelPlanner: React.FC = () => {
           (result) => {
             setResponse(result);
             setLoading(false);
-            setElapsedTime(Date.now() - startTime);
+            setElapsedTime(Date.now() - currentStartTime);
             if (result.wallet_balance !== undefined) {
               setWalletBalance(result.wallet_balance);
             }
