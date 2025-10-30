@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TravelForm } from '../components/TravelForm';
 import { ItineraryDisplay } from '../components/ItineraryDisplay';
 import { AgentLogs } from '../components/AgentLogs';
@@ -64,6 +64,14 @@ export const TravelPlanner: React.FC = () => {
   const [walletBalance, setWalletBalance] = useState<number>(10000);
 
   const selectedOption = AGENT_OPTIONS.find(opt => opt.id === selectedAgent)!;
+  const streamingLogsRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to streaming logs when they update
+  useEffect(() => {
+    if (streamingLogs.length > 0 && streamingLogsRef.current) {
+      streamingLogsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [streamingLogs]);
 
   const handleSubmit = async (request: TravelRequest) => {
     setLoading(true);
@@ -349,7 +357,7 @@ export const TravelPlanner: React.FC = () => {
 
           {/* Streaming Logs - Compact Timeline */}
           {streamingLogs.length > 0 && (
-            <div className="mt-6 max-w-3xl mx-auto">
+            <div ref={streamingLogsRef} className="mt-6 max-w-3xl mx-auto">
               <h3 className="font-bold text-blue-900 mb-4 text-center text-lg">
                 Live Agent Activity
               </h3>
